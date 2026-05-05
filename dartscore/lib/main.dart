@@ -7,10 +7,21 @@ import 'providers/match_provider.dart';
 import 'models/match_model.dart';
 import 'theme.dart';
 
+import 'package:camera/camera.dart';
+
+List<CameraDescription> cameras = [];
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
+  try {
+    cameras = await availableCameras();
+  } catch (e) {
+    debugPrint('Camera initialization failed: $e');
+  }
+
   if (kIsWeb) {
+
     await Firebase.initializeApp(
       options: const FirebaseOptions(
         apiKey: "AIzaSyDH0L5JeYVmHr3zNyEpJwJIAWsMkXg3y7U",

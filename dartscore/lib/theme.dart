@@ -7,6 +7,7 @@ class AppTheme {
   static const Color primary = Color(0xFF00FFD1);
   static const Color onSurface = Color(0xFFE5E2E1);
   static const Color secondary = Color(0xFFB0C6FF);
+  static const Color accentRed = Color(0xFFFF4B4B);
 
   static ThemeData get darkTheme {
     return ThemeData(
@@ -18,6 +19,7 @@ class AppTheme {
         primary: primary,
         secondary: secondary,
         onSurface: onSurface,
+        error: accentRed,
       ),
       textTheme: TextTheme(
         displayLarge: GoogleFonts.spaceGrotesk(
@@ -30,8 +32,15 @@ class AppTheme {
           fontSize: 32,
           fontWeight: FontWeight.w600,
         ),
+        headlineMedium: GoogleFonts.spaceGrotesk(
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+        ),
         bodyLarge: GoogleFonts.inter(
           fontSize: 18,
+        ),
+        bodyMedium: GoogleFonts.inter(
+          fontSize: 16,
         ),
         labelLarge: GoogleFonts.lexend(
           fontSize: 12,

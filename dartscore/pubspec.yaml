@@ -39,6 +39,10 @@ dependencies:
   firebase_auth: ^6.4.0
   google_fonts: ^8.1.0
   provider: ^6.1.5+1
+  audioplayers: ^6.6.0
+  camera: ^0.12.0+1
+  tflite_flutter: ^0.12.1
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +65,15 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/audio/heartbeat.mp3
+    - assets/audio/dart_hit.mp3
+    - assets/audio/180_announcer.mp3
+    - assets/audio/roast_bust.mp3
+    - assets/audio/roast_miss.mp3
+    - assets/audio/game_on.mp3
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
