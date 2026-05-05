@@ -2,6 +2,6 @@
   "name": "dartscore",
   "version": "1.0.0",
   "scripts": {
-    "build": "curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.0-stable.tar.xz -o flutter.tar.xz && tar xf flutter.tar.xz && export PATH=\"$PATH:`pwd`/flutter/bin\" && flutter config --enable-web && flutter build web"
+    "build": "if [ ! -d \"flutter\" ]; then curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.0-stable.tar.xz -o flutter.tar.xz && tar xf flutter.tar.xz; fi && export PATH=\"$PATH:$(pwd)/flutter/bin\" && flutter config --enable-web && flutter build web"
   }
 }
