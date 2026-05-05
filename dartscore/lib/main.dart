@@ -8,7 +8,22 @@ import 'theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyDH0L5JeYVmHr3zNyEpJwJIAWsMkXg3y7U",
+        authDomain: "smart-fridge-mngr-8819.firebaseapp.com",
+        projectId: "smart-fridge-mngr-8819",
+        storageBucket: "smart-fridge-mngr-8819.firebasestorage.app",
+        messagingSenderId: "289071716148",
+        appId: "1:289071716148:web:0fb472c6b163e0d5ab7761",
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
+  
   runApp(const DartScoreApp());
 }
 
