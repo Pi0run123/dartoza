@@ -109,9 +109,10 @@ class _ScoreDisplay extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: match.playerUids.map((uid) {
           bool isActive = provider.activePlayerUid == uid;
+          int displayScore = (match.scores[uid] ?? 0) - (isActive ? provider.currentTurnScore : 0);
           return _PlayerCard(
             uid: uid,
-            score: match.scores[uid] ?? 0,
+            score: displayScore,
             isActive: isActive,
             pressure: isActive ? provider.pressureLevel : 0.0,
           );
@@ -297,7 +298,7 @@ class _Keypad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.4),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
@@ -313,27 +314,30 @@ class _Keypad extends StatelessWidget {
               const _ModifierButton(label: 'TRIPLE', multiplier: 3),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
+              crossAxisCount: 6,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              childAspectRatio: 1.1,
             ),
-            itemCount: 22,
+            itemCount: 23,
             itemBuilder: (context, index) {
               if (index < 20) {
                 return _KeyButton(value: index + 1);
               } else if (index == 20) {
                 return _KeyButton(value: 25, label: '25');
-              } else {
+              } else if (index == 21) {
                 return _KeyButton(value: 50, label: 'BULL');
+              } else {
+                return _KeyButton(value: 0, label: '0');
               }
             },
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
